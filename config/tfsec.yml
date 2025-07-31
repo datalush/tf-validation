@@ -1,0 +1,12 @@
+---
+exclude:
+  - aws-kms-auto-rotate-keys                    # A KMS key is not configured to auto-rotate
+  - aws-s3-enable-bucket-logging                # S3 Bucket does not have logging enabled
+  - aws-lambda-enable-tracing                   # Lambda functions should have X-Ray tracing enabled
+  - aws-api-gateway-enable-access-logging       # API Gateway stages for V1 and V2 should have access logging enabled
+  - aws-api-gateway-use-secure-tls-policy       # API Gateway domain name uses outdated SSL/TLS protocols
+  - aws-api-gateway-enable-tracing              # API Gateway must have X-Ray tracing enabled
+  - aws-ecr-enforce-immutable-repository        # ECR images tags shouldn't be mutable
+  - aws-elb-use-secure-tls-policy               # An outdated SSL policy is in use by a load balancer
+  - aws-iam-no-policy-wildcards                 # IAM policy should avoid use of wildcards and instead apply the principle of least privilege
+  - aws-ec2-no-public-egress-sgr                #Â An egress security group rule allows traffic to /0.

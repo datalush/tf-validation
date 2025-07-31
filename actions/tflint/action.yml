@@ -44,12 +44,14 @@ runs:
 
           for dir in $dirs; do
             echo "🚀 Running TFLint in: $dir"
-            tflint --chdir="$dir"
-            if [ $? -ne 0 ]; then
-              echo "❌ TFLint found issues in $dir"
-              exit 1
-            fi
+            tflint --chdir="$dir" --format json >> /tmp/report.json || WITH_ERROR=1
           done
+
+          if [ $WITH_ERROR -eq 1 ]; then
+            echo "❌ TFLint found errors"
+            cat /tmp/report.json
+            exit 1
+          fi          
         else
           echo "✅ No Terraform files changed."
         fi

@@ -1,0 +1,29 @@
+# terrascan configuration file
+
+# scan and skip rules configuration
+[rules]
+    # scan rules (list of rules to scan)
+    # adding rules here will override rules in the policy path
+    #scan-rules = [
+    #]
+
+    # skip rules (list of rules to skip)
+    # Rules that does not have a match with TFSEC
+    #   - nothing by far
+    skip-rules = [
+        "AC_AWS_0214"
+        ,"AC_AWS_0160"      # Ensure rotation for customer created CMKs is enabled
+        ,"AC_AWS_0497"      # Ensure S3 buckets have access logging enabled
+        ,"AC_AWS_0163"      # Lambda tracing is not enabled
+        ,"AC_AWS_0485"      # Lambda tracing is not enabled
+        ,"AC_AWS_0442"      # AWS API Gateway V2 Stage is missing access logs
+        ,"AC_AWS_0013"      # AWS API Gateway Enable SSL Client Certificate
+        ,"AC_AWS_0015"      # Ensure AWS API Gateway has active xray tracing enabled
+        ,"AC_AWS_0447"      # ECR should have an image tag be immutable
+        ,"AC_AWS_0120"      # AWS ELB incoming traffic not encrypted
+        ,"AC_AWS_0147"      # Determine what users need to do and then craft policies for them that let the users perform only those tasks, instead of granting full administrative privileges
+        ,"AC_AWS_0011"      # API Gateway Private Endpoints
+        ,"AC_AWS_0014"      # Enable AWS CloudWatch Logs for APIs
+        ,"AC_AWS_0484"      # Ensure AWS Lambda function has policy attached
+        
+    ]

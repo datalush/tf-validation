@@ -1,0 +1,28 @@
+compact: true
+quiet: true
+block-list-secret-scan: []
+download-external-modules: false
+evaluate-variables: true
+framework:
+  - all
+mask: []
+skip-check:
+  - CKV_AWS_7       # Ensure rotation for customer created CMKs is enabled
+  - CKV_AWS_18      # Ensure the S3 bucket has access logging enabled
+  - CKV_AWS_50      # X-ray tracing is enabled for Lambda
+  - CKV_AWS_76      # Ensure API Gateway has Access Logging enabled
+  - CKV2_AWS_51     # Ensure AWS API Gateway endpoints uses client certificate authentication
+  - CKV_AWS_73      # Ensure API Gateway has X-Ray Tracing enabled
+  - CKV_AWS_51      # Ensure ECR Image Tags are immutable
+  - CKV_AWS_127     # Ensure that Elastic Load Balancer(s) uses SSL certificates provided by AWS Certificate Manager
+  - CKV_AWS_283     # Ensure no IAM policies documents allow ALL or any AWS principal permissions to the resource
+  - CKV_AWS_355     # Ensure no IAM policies documents allow â€œ*â€ as a statementâ€™s resource for restrictable actions
+  - CKV_AWS_356     # Ensure no IAM policies documents allow â€œ*â€ as a statementâ€™s resource for restrictable actions
+  # Rules not presents in TFSEC and TERRASCAN
+  - CKV_AWS_284     # Ensure State Machine has X-Ray tracing enabled
+  - CKV2_AWS_5      # Ensure that Security Groups are attached to another resource
+  - CKV_SECRET_6    # Base64 High Entropy String
+  - CKV_AWS_225     # Ensure API Gateway method setting caching is enabled
+  - CKV2_AWS_29     # Ensure public API gateway are protected by WAF
+  - CKV_AWS_120     # Ensure API Gateway caching is enabled
+  - CKV_AWS_144     # Ensure that S3 bucket has cross-region replication enabled
