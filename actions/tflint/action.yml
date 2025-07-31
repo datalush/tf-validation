@@ -36,12 +36,20 @@ runs:
       shell: bash
       run: |
         if [[ -n "${{ steps.changed-files.outputs.all_changed_files }}" ]]; then
-          echo "Modified files: ${{ steps.changed-files.outputs.all_changed_files }}"
-          tflint ${{ steps.changed-files.outputs.all_changed_files }} --format default
-          if [ $? -ne 0 ]; then
-            echo "❌ TFLint found errors"
-            exit 1 
-          fi
+          echo "🔍 Modified files:"
+          echo "${{ steps.changed-files.outputs.all_changed_files }}"
+          
+          # Obtener carpetas únicas
+          dirs=$(echo "${{ steps.changed-files.outputs.all_changed_files }}" | xargs -n1 dirname | sort -u)
+
+          for dir in $dirs; do
+            echo "🚀 Running TFLint in: $dir"
+            tflint --chdir="$dir"
+            if [ $? -ne 0 ]; then
+              echo "❌ TFLint found issues in $dir"
+              exit 1
+            fi
+          done
         else
-          echo "✅ No files modified."
+          echo "✅ No Terraform files changed."
         fi
