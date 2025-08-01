@@ -7,6 +7,10 @@ runs:
     - name: Checkout
       uses: actions/checkout@v4
 
+    - name: Debug
+      shell: bash
+      run: | 
+        cat ${{ github.action_path }}/config/tfsec.yml
     - name: tfsec
       uses: aquasecurity/tfsec-action@v1.0.0
       with:
