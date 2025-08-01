@@ -10,6 +10,7 @@ runs:
     - name: Debug
       shell: bash
       run: | 
+        ls /home/runner/work/_actions/datalush/tf-validation
         cat ${{ github.action_path }}/config/tfsec.yml
     - name: tfsec
       uses: aquasecurity/tfsec-action@v1.0.0
