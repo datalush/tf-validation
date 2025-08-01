@@ -1,10 +1,6 @@
 name: "TFLint on Changed Files"
 description: "Run TFLint only in files with changes"
 inputs:
-  terraform-version:
-    description: "Terraform version to be installed"
-    required: false
-    default: "1.5.7"
   tflint-version:
     description: "TFLint version to be installed"
     required: false
