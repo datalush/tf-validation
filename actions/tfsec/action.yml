@@ -7,14 +7,8 @@ runs:
     - name: Checkout
       uses: actions/checkout@v4
 
-    - name: Debug
-      shell: bash
-      run: | 
-        ls /home/runner/work/_actions/datalush/tf-validation/main
-        ls /home/runner/work/_actions/datalush/tf-validation/main/config
-        cat ${{ github.action_path }}/../../config/tfsec.yml
     - name: tfsec
       uses: aquasecurity/tfsec-action@v1.0.0
       with:
-        config_file: ${{ github.action_path }}/../../config/tfsec.yml
         format: json
+        additional_args: --config_file ${{ github.action_path }}/../../config/tfsec.yml
