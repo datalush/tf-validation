@@ -1,5 +1,5 @@
-name: "TFLint on Changed Files"
-description: "Run TFLint only in files with changes"
+name: "TFLint"
+description: "Run TFLint"
 inputs:
   tflint-version:
     description: "TFLint version to be installed"

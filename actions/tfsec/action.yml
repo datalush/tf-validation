@@ -1,5 +1,5 @@
 name: "TFSec on Changed Files"
-description: "Run TFLint only in files with changes"
+description: "Run TFSec"
 
 runs:
   using: "composite"
@@ -11,4 +11,4 @@ runs:
       uses: aquasecurity/tfsec-action@v1.0.0
       with:
         format: json
-        additional_args: --config-file ${{ github.action_path }}/../../config/tfsec.yml
+        additional_args: --config-file ${{ github.action_path }}/config.yml
