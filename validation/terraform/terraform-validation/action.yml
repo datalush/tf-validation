@@ -1,0 +1,34 @@
+name: "Terraform Validate"
+description: "Run terraform validate"
+inputs:
+  terraform-version:
+    description: "Terraform version to be installed"
+    required: false
+    default: 1.5.7
+
+  workdir:
+    description: "Directory where the command will be executed"
+    required: false
+
+runs:
+  using: "composite"
+  steps:
+    - uses: hashicorp/setup-terraform@v3
+      with:
+      terraform_version: ${{ inputs.terraform-version }}
+
+    - name: Run Terraform validate
+      run: |
+        # Change directory if workdir is provided
+        if [ -n "${{ inputs.workdir }}" ]; then
+          cd "${{ inputs.workdir }}" || { echo "❌ Directory ${{ inputs.workdir }} not found"; exit 1; }
+          echo "Changed to directory: ${{ inputs.workdir }}"
+        fi
+        terraform validate -json > /tmp/validate_results.json
+        TF_VALIDATE_EXIT_CODE=$?
+
+        if [ $TF_VALIDATE_EXIT_CODE -eq 0 ]; then
+          echo "✅ Validation passed"
+        else
+          echo "❌ Validation failed"
+        fi

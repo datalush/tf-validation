@@ -1,0 +1,17 @@
+name: "Checkov"
+description: "Run Checkov"
+inputs:
+  directory:
+    description: "Directory where checkov will be executed"
+    required: false
+    default: "."
+
+runs:
+  using: "composite"
+  steps:
+    - name: Run Terrascan
+      id: terrascan
+      uses: tenable/terrascan-action@main
+      with:
+        iac_type: 'terraform'
+        config_path: ${{ github.action_path }}/config.toml

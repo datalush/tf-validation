@@ -9,9 +9,6 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: Checkout
-      uses: actions/checkout@v4
-
     - name: Run Checkov action
       id: checkov
       uses: bridgecrewio/checkov-action@master

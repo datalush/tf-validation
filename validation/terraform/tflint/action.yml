@@ -13,9 +13,6 @@ runs:
       with:
         tflint_version: ${{ inputs.tflint-version }}
 
-    - name: Checkout
-      uses: actions/checkout@v4
-
     - name: Get changed Terraform files
       id: changed-files
       uses: tj-actions/changed-files@v41
