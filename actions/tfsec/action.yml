@@ -11,4 +11,4 @@ runs:
       uses: aquasecurity/tfsec-action@v1.0.0
       with:
         format: json
-        additional_args: --config_file ${{ github.action_path }}/../../config/tfsec.yml
+        additional_args: --config-file ${{ github.action_path }}/../../config/tfsec.yml
