@@ -5,7 +5,7 @@ runs:
   using: "composite"
   steps:
     - name: tfsec
-      uses: aquasecurity/tfsec-action@v1.0.0
+      uses: aquasecurity/tfsec-action@v1.0.3
       with:
         format: json
         additional_args: --config-file ${{ github.action_path }}/config.yml

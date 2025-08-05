@@ -1,10 +1,5 @@
-name: "Checkov"
-description: "Run Checkov"
-inputs:
-  directory:
-    description: "Directory where checkov will be executed"
-    required: false
-    default: "."
+name: "Terrascan"
+description: "Run Terrascan"
 
 runs:
   using: "composite"
