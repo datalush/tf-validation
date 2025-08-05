@@ -31,4 +31,6 @@ runs:
           echo "✅ Validation passed"
         else
           echo "❌ Validation failed"
+          cat /tmp/validate_results.json
+          exit 1;
         fi
